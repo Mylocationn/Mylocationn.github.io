@@ -137,8 +137,11 @@ font-family:'Open Sans',sans-serif
      font-size:30px;
 }
 .rslt{
-     font-size:25px;
+    font-size:25px;
     word-wrap: break-word;
+    background-color:#eee;
+    padding:30px;
+    display:none;
 }
 #isCpd{
      font-size:25px;
@@ -218,6 +221,7 @@ function showPosition(position) {
       let lttd =position.coords.latitude, lngtd=position.coords.longitude ,
 lien ='https://www.google.com/maps/place/'+ lttd + ',+' +lngtd ;
 
+dsply("rslt","block");
     gebi('rslt').innerHTML = `موقعك على الخريطة هو <br>
 <a id="arslt"  target="_blank" href="${lien}">${lien}</a>
  <br> 
@@ -226,8 +230,11 @@ lien ='https://www.google.com/maps/place/'+ lttd + ',+' +lngtd ;
                  </button>
 
 <div id="isCpd">تم النسخ بنجاح</div>
+`
+/*
 <iframe src="${lien}" height="400" width="100%"></iframe>
-`;
+   */
+;
 gebi("inpRslt").value=lien;
 }
 
@@ -271,4 +278,3 @@ function dsply(el,dsp){    gebi(el).style.display=dsp}
 
 </body>
 </html>
-
