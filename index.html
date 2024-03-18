@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang=en>
+<head>
+<meta charset=UTF-8>
+<meta http-equiv=X-UA-Compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=theme-color content=#0289f5>
+
+<style>
+:root {
+     --mnCl:#0289f5;
+    --mnClOp:#2196f3c2;
+    --gr:#028679;
+    --section-padding: 60px;
+    --main-durachen: 0.3s;
+}
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+text-align: center;
+}
+body{
+font-family:'Open Sans',sans-serif
+}
+/*general classes */
+
+.blck {
+    display: block;
+}
+.n {
+    display: none;
+}
+
+/*end general classes */
+
+
+#cntnr {
+    position:relative;
+    background-color: #7473739e;
+    width: 100%;
+    height: 100%;
+    display: none;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    position: fixed;
+    background-size: cover;
+    cursor:pointer;
+    z-index: 1;
+}
+
+.dvPlc {
+    width: 50%;
+    position: relative;
+    z-index: 2;
+    background-color:#fff;
+     border-radius:7px;
+     overflow-y:visible;
+     border:3px solid var(--gr);
+    transition: 0.3s;
+    transform: scaleY(0);
+}
+
+.opPlc {
+    transform: scaleY(1);
+}
+.clrear{
+     font-size:5vh;
+     color:#555;
+     float:right;
+     display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+     position:absolute;
+     margin:2% 5px 0;
+     border-radius:50%;
+     width:40px;
+     height:40px;
+     right:10px;
+     overflow:hidden
+     cursor:pointer
+}
+.clrear::before{
+      content:"";
+      position:absolute;
+      left:0;
+      width:100%;
+       height:100%;
+      background-color:#eee;
+      z-index:-1;
+      opacity:0;
+      transition:.2s
+}
+.clrear:hover::before{
+    opacity:1
+}
+#autoris,#err{
+      font-size:25px;
+      display:none;
+      font-weight:700;
+      padding:35px
+}
+#err{
+      color:#d70000;
+}
+.okbtn{
+    display:block;
+    color:#fff;
+    width:fit-content;
+    font-size:4vh;
+    background:var(--mnCl);
+    margin:2vh auto 3vh;
+    padding:5px 20px;
+    border:1px;border-radius:5px;
+    cursor:pointer
+}
+.nofcs:focus{
+    outline:0
+}
+
+.name{
+    background-color:var(--mnCl);
+    color:#fff;
+    padding:35px;
+    font-size:55px;
+    font-weight:700;
+    margin:0
+}
+.txt{
+     word-wrap: break-word;
+     margin: 20px;
+     font-size:30px;
+}
+.rslt{
+     font-size:25px;
+    word-wrap: break-word;
+}
+#isCpd{
+     font-size:25px;
+    color:var(--gr);
+    font-weight:700;
+    display :none;
+}
+@media (max-width:700px){
+    .dvPlc{
+       width:90%;
+     }
+    .name{
+       font-size:35px;
+       padding:25px
+     }
+}
+#inpRslt{
+display :none
+}
+</style>
+
+
+
+
+
+
+
+
+
+<title>حدد موقعك على الخريطة </title>
+</head>
+
+<body>
+
+<div id="cntnr" class="hidjs" onclick="hiding()">
+        <div id="divplac" class="dvPlc">
+             <span class="clrear" onclick="hiding()">×</span>
+
+             <hr style="margin-top:8.2vh">
+
+             <div id="autoris" class="hidjs">قم بسماح للتطبيق بإستخدام <br>GPS <br>
+               <button id="okautoris" onclick="getLocation()" class="okbtn nofcs">حسنا
+                 </button>
+              </div>
+<div id="err" class="hidjs">جهازك لا يدعم إستخدام <br>GPS <br>
+               <button id="okautoris" onclick="hiding()" class="okbtn nofcs">حسنا
+                 </button>
+              </div>
+      </div>
+    </div>
+
+
+<h1 class="name">موقعي على الخريطة</h1>
+
+<h2 class="txt">إظغط على تحديد لمعرفة موقعك </h2>
+
+<button onclick="opnDiv('autoris')"  class="okbtn nofcs">تحديد</button>
+
+<div id="rslt" class="rslt"></div>
+<input type="text" id="inpRslt"
+name="custId" value=""> 
+
+
+<script>
+
+function getLocation() {
+      hiding()
+  try {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } catch (error){
+    opnDiv('err');
+gebi('err').innerHTML +=error;
+  }
+}
+
+function showPosition(position) {
+      let lttd =position.coords.latitude, lngtd=position.coords.longitude ,
+lien ='https://www.google.com/maps/place/'+ lttd + ',+' +lngtd ;
+
+    gebi('rslt').innerHTML = `موقعك على الخريطة هو <br>
+<a id="arslt"  target="_blank" href="${lien}">${lien}</a>
+ <br> 
+إظغط على نسخ لنسخ الرابط
+</br> <button id="okautoris" onclick="copyLien()" class="okbtn nofcs" >نسخ
+                 </button>
+
+<div id="isCpd">تم النسخ بنجاح</div>
+<iframe src="${lien}" height="400" width="100%"></iframe>
+`;
+gebi("inpRslt").value=lien;
+}
+
+
+gebi("divplac").addEventListener("click",n=>{n.stopPropagation()});
+function hiding() {
+setTimeout(() => {
+        gebi("divplac").className = "dvPlc";
+    }, 100)
+    
+ setTimeout(() => {
+document.querySelectorAll('.hidjs').forEach(el=>{
+el.style.display="none";
+})
+        
+    }, 450)
+}
+
+function gebi(el){
+return document.getElementById(el)
+}
+function opnDiv(el){
+        dsply("cntnr","flex");
+        gebi("divplac").className +=" opPlc";  
+ dsply(el,"block");
+}
+function copyLien(){
+
+let rslt = gebi('inpRslt');
+    rslt.select();
+rslt.setSelectionRange(0, 9999);
+navigator.clipboard.writeText(rslt.value);
+
+dsply('isCpd',"block");
+setTimeout(() => {
+        dsply('isCpd',"none");
+    }, 5000)
+}
+function dsply(el,dsp){    gebi(el).style.display=dsp}
+</script>
+
+</body>
+</html>
+
