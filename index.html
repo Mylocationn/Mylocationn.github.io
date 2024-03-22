@@ -118,7 +118,8 @@ font-family:'Open Sans',sans-serif
     background:var(--mnCl);
     margin:2vh auto 3vh;
     padding:5px 20px;
-    border:1px;border-radius:5px;
+    border:1px;
+    border-radius:5px;
     cursor:pointer
 }
 .nofcs:focus{
@@ -142,8 +143,10 @@ font-family:'Open Sans',sans-serif
     font-size:25px;
     word-wrap: break-word;
     background-color:#eee;
-    padding:30px;
     display:none;
+}
+.dvrslt{
+    padding:30px;
 }
 #isCpd{
      font-size:25px;
@@ -225,16 +228,18 @@ function showPosition(position) {
 lien ='https://www.google.com/maps/place/'+ lttd + ',+' +lngtd ;
 
 dsply("rslt","block");
-    gebi('rslt').innerHTML = `موقعك على الخريطة هو <br>
-<a id="arslt"  target="_blank" href="${lien}">${lien}</a>
- <br> </br>
-<button id="okautoris" onclick="copyLien()" class="okbtn nofcs" >نسخ 
+    gebi('rslt').innerHTML = `
+<div class="dvrslt">موقعك على الخريطة هو <br>
+       <a id="arslt"  target="_blank" href="${lien}">${lien}</a>
+       <br> </br>
+       <button id="okautoris" onclick="copyLien()" class="okbtn nofcs" >نسخ 
                  </button>
 
-<div id="isCpd">تم النسخ بنجاح</div>
+    <div id="isCpd">تم النسخ بنجاح</div>
+</div>
 
-
-<iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d405.05301108992666!2d${lngtd}!3d${lttd}!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sar!2sdz!4v${scnds} !5m2!1sar!2sdz"  width="650" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+<iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d405.05301108992666!2d${lngtd}!3d${lttd}!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sar!2sdz!4v${scnds} !5m2!1sar!2sdz"  
+width="94%"  max-width="650" height="450" style="border:0;border-radius:5px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 `
 ;
 gebi("inpRslt").value=lien;
@@ -275,7 +280,7 @@ setTimeout(() => {
         dsply('isCpd',"none");
     }, 5000)
 }
-function dsply(el,dsp){    gebi(el).style.display=dsp}
+function dsply(el,dsp){gebi(el).style.display=dsp}
 </script>
 
 </body>
