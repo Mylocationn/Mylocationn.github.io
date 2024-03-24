@@ -91,12 +91,13 @@ font-family:'Open Sans',sans-serif
       content:"";
       position:absolute;
       left:0;
+      border-radius:50%;
       width:100%;
        height:100%;
-      background-color:#eee;
+      background-color:#ddd;
       z-index:-1;
       opacity:0;
-      transition:.2s
+      transition: 0.3s
 }
 .clrear:hover::before{
     opacity:1
@@ -143,6 +144,7 @@ font-family:'Open Sans',sans-serif
     font-size:25px;
     word-wrap: break-word;
     background-color:#eee;
+    margin: 0 0 20px;
     display:none;
 }
 .dvrslt{
@@ -211,7 +213,6 @@ name="custId" value="">
 
 
 <script>
-const scnds = new Date().getTime();
 
 function getLocation() {
       hiding()
@@ -224,7 +225,7 @@ gebi('err').innerHTML +=error;
 }
 
 function showPosition(position) {
-      let lttd =position.coords.latitude, lngtd=position.coords.longitude ,
+      let lttd =position.coords.latitude, lngtd=position.coords.longitude ,scnds = new Date().getTime(),
 lien ='https://www.google.com/maps/place/'+ lttd + ',+' +lngtd ;
 
 dsply("rslt","block");
@@ -250,26 +251,26 @@ gebi("divplac").addEventListener("click",n=>{n.stopPropagation()});
 function hiding() {
 setTimeout(() => {
         gebi("divplac").className = "dvPlc";
-    }, 100)
+    }, 200)
     
  setTimeout(() => {
 document.querySelectorAll('.hidjs').forEach(el=>{
 el.style.display="none";
 })
         
-    }, 450)
+    }, 550)
 }
 
-function gebi(el){
-return document.getElementById(el)
-}
+
+
 function opnDiv(el){
         dsply("cntnr","flex");
         gebi("divplac").className +=" opPlc";  
  dsply(el,"block");
 }
-function copyLien(){
 
+
+function copyLien(){
 let rslt = gebi('inpRslt');
     rslt.select();
 rslt.setSelectionRange(0, 9999);
@@ -280,7 +281,10 @@ setTimeout(() => {
         dsply('isCpd',"none");
     }, 5000)
 }
+
+/*///// short function \\\\\*/
 function dsply(el,dsp){gebi(el).style.display=dsp}
+function gebi(el){  return document.getElementById(el)  }
 </script>
 
 </body>
