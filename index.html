@@ -1,176 +1,194 @@
 <!doctype html>
 <html lang=en>
+
 <head>
-<meta charset=UTF-8>
-<meta http-equiv=X-UA-Compatible content="IE=edge">
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=theme-color content=#0289f5>
-<link rel="icon" type="image/png" sizes="192x192" href="lctn192.png" />
-<link rel="icon" type="image/png" sizes="512x512" href="lctn512.png" />
+    <meta charset=UTF-8>
+    <meta http-equiv=X-UA-Compatible content="IE=edge">
+    <meta name=viewport content="width=device-width,initial-scale=1">
+    <meta name=theme-color content=#0289f5>
+    <link rel="icon" type="image/png" sizes="192x192" href="lctn192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="lctn512.png" />
 
-<style>
-:root {
-     --mnCl:#0289f5;
-    --mnClOp:#2196f3c2;
-    --gr:#028679;
-    --section-padding: 60px;
-    --main-durachen: 0.3s;
-}
-* {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    -webkit-tap-highlight-color: transparent;
-text-align: center;
-}
-body{
-font-family:'Open Sans',sans-serif
-}
-/*general classes */
+    <style>
+        :root {
+            --mnCl: #0289f5;
+            --mnClOp: #2196f3c2;
+            --gr: #028679;
+            --section-padding: 60px;
+            --main-durachen: 0.3s;
+        }
 
-.blck {
-    display: block;
-}
-.n {
-    display: none;
-}
+        * {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+            text-align: center;
+        }
 
-/*end general classes */
+        body {
+            font-family: 'Open Sans', sans-serif
+        }
 
+        /*general classes */
 
-#cntnr {
-    position:relative;
-    background-color: #7473739e;
-    width: 100%;
-    height: 100%;
-    display: none;
-    flex-wrap: wrap;
-    align-content: center;
-    justify-content: center;
-    position: fixed;
-    background-size: cover;
-    cursor:pointer;
-    z-index: 1;
-}
+        .blck {
+            display: block;
+        }
 
-.dvPlc {
-    width: 50%;
-    position: relative;
-    z-index: 2;
-    background-color:#fff;
-     border-radius:7px;
-     overflow-y:visible;
-     border:3px solid var(--gr);
-    transition: 0.3s;
-    transform: scaleY(0);
-}
+        .n {
+            display: none;
+        }
 
-.opPlc {
-    transform: scaleY(1);
-}
-.clrear{
-     font-size:5vh;
-     color:#555;
-     float:right;
-     display: flex;
-    flex-wrap: wrap;
-    align-content: center;
-    justify-content: center;
-     position:absolute;
-     margin:2% 5px 0;
-     border-radius:50%;
-     width:40px;
-     height:40px;
-     right:10px;
-     overflow:hidden
-     cursor:pointer
-}
-.clrear::before{
-      content:"";
-      position:absolute;
-      left:0;
-      border-radius:50%;
-      width:100%;
-       height:100%;
-      background-color:#ddd;
-      z-index:-1;
-      opacity:0;
-      transition: 0.3s
-}
-.clrear:hover::before{
-    opacity:1
-}
-#autoris,#err{
-      font-size:25px;
-      display:none;
-      font-weight:700;
-      padding:35px
-}
-#err{
-      color:#d70000;
-}
-.okbtn{
-    display:block;
-    color:#fff;
-    width:fit-content;
-    font-size:4vh;
-    background:var(--mnCl);
-    margin:2vh auto 3vh;
-    padding:5px 20px;
-    border:1px;
-    border-radius:5px;
-    cursor:pointer
-}
-.nofcs:focus{
-    outline:0
-}
-
-.name{
-    background-color:var(--mnCl);
-    color:#fff;
-    padding:35px;
-    font-size:55px;
-    font-weight:700;
-    margin:0
-}
-.txt{
-     word-wrap: break-word;
-     margin: 20px;
-     font-size:30px;
-}
-.rslt{
-    font-size:25px;
-    word-wrap: break-word;
-    background-color:#eee;
-    margin: 0 0 20px;
-    display:none;
-}
-.dvrslt{
-    padding:30px;
-}
-#isCpd{
-     font-size:25px;
-    color:var(--gr);
-    font-weight:700;
-    display :none;
-}
-@media (max-width:700px){
-    .dvPlc{
-       width:90%;
-     }
-    .name{
-       font-size:35px;
-       padding:25px
-     }
-}
-#inpRslt{
-display :none
-}
-</style>
+        /*end general classes */
 
 
+        #cntnr {
+            position: relative;
+            background-color: #7473739e;
+            width: 100%;
+            height: 100%;
+            display: none;
+            flex-wrap: wrap;
+            align-content: center;
+            justify-content: center;
+            position: fixed;
+            background-size: cover;
+            cursor: pointer;
+            z-index: 1;
+        }
+
+        .dvPlc {
+            width: 50%;
+            position: relative;
+            z-index: 2;
+            background-color: #fff;
+            border-radius: 7px;
+            overflow-y: visible;
+            border: 3px solid var(--gr);
+            transition: 0.3s;
+            transform: scaleY(0);
+        }
+
+        .opPlc {
+            transform: scaleY(1);
+        }
+
+        .clrear {
+            font-size: 5vh;
+            color: #555;
+            float: right;
+            display: flex;
+            flex-wrap: wrap;
+            align-content: center;
+            justify-content: center;
+            position: absolute;
+            margin: 10px 5px 2px;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            right: 10px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .clrear::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            border-radius: 50%;
+            width: 100%;
+            height: 100%;
+            background-color: #ddd;
+            z-index: -1;
+            opacity: 0;
+            transition: 0.3s
+        }
+
+        .clrear:hover::before {
+            opacity: 1
+        }
+
+        #autoris,
+        #err {
+            font-size: 25px;
+            display: none;
+            font-weight: 700;
+            padding: 35px
+        }
+
+        #err {
+            color: #d70000;
+        }
+
+        .okbtn {
+            display: block;
+            color: #fff;
+            width: fit-content;
+            font-size: 4vh;
+            background: var(--mnCl);
+            margin: 2vh auto 3vh;
+            padding: 5px 20px;
+            border: 1px;
+            border-radius: 5px;
+            cursor: pointer
+        }
+
+        .nofcs:focus {
+            outline: 0
+        }
+
+        .name {
+            background-color: var(--mnCl);
+            color: #fff;
+            padding: 35px;
+            font-size: 55px;
+            font-weight: 700;
+            margin: 0
+        }
+
+        .txt {
+            word-wrap: break-word;
+            margin: 20px;
+            font-size: 30px;
+        }
+
+        .rslt {
+            font-size: 25px;
+            word-wrap: break-word;
+            background-color: #eee;
+            margin: 0 0 20px;
+            display: none;
+        }
+
+        .dvrslt {
+            padding: 30px;
+        }
+
+        #isCpd {
+            font-size: 25px;
+            color: var(--gr);
+            font-weight: 700;
+            display: none;
+        }
+
+        @media (max-width:700px) {
+            .dvPlc {
+                width: 90%;
+            }
+
+            .name {
+                font-size: 35px;
+                padding: 25px
+            }
+        }
+
+        #inpRslt {
+            display: none
+        }
+    </style>
 
 
 
@@ -178,58 +196,59 @@ display :none
 
 
 
-<title> موقعي على الخريطة </title>
+
+
+    <title> موقعي على الخريطة </title>
 </head>
 
 <body>
 
-<div id="cntnr" class="hidjs" onclick="hiding()">
+    <div id="cntnr" class="hidjs" onclick="hiding()">
         <div id="divplac" class="dvPlc">
-             <span class="clrear" onclick="hiding()">×</span>
+            <span class="clrear" onclick="hiding()">×</span>
 
-             <hr style="margin-top:8.2vh">
+            <hr style="margin-top:55px">
 
-             <div id="autoris" class="hidjs">قم بالسماح للتطبيق بإستخدام <br>GPS <br>
-               <button id="okautoris" onclick="getLocation()" class="okbtn nofcs">حسنا
-                 </button>
-              </div>
-<div id="err" class="hidjs">جهازك لا يدعم إستخدام <br>GPS <br>
-               <button id="okautoris" onclick="hiding()" class="okbtn nofcs">حسنا
-                 </button>
-              </div>
-      </div>
+            <div id="autoris" class="hidjs">قم بالسماح للتطبيق بإستخدام <br>GPS <br>
+                <button id="okautoris" onclick="getLocation()" class="okbtn nofcs">حسنا
+                </button>
+            </div>
+            <div id="err" class="hidjs">جهازك لا يدعم إستخدام <br>GPS <br>
+                <button id="okautoris" onclick="hiding()" class="okbtn nofcs">حسنا
+                </button>
+            </div>
+        </div>
     </div>
 
 
-<h1 class="name">موقعي على الخريطة</h1>
+    <h1 class="name">موقعي على الخريطة</h1>
 
-<h2 class="txt">إظغط على تحديد لمعرفة موقعك </h2>
+    <h2 class="txt">إظغط على تحديد لمعرفة موقعك </h2>
 
-<button onclick="opnDiv('autoris')"  class="okbtn nofcs">تحديد</button>
+    <button onclick="opnDiv('autoris')" class="okbtn nofcs">تحديد</button>
 
-<div id="rslt" class="rslt"></div>
-<input type="text" id="inpRslt"
-name="custId" value=""> 
+    <div id="rslt" class="rslt"></div>
+    <input type="text" id="inpRslt" name="custId" value="">
 
 
-<script>
+    <script>
 
-function getLocation() {
-      hiding()
-  try {
-    navigator.geolocation.getCurrentPosition(showPosition);
-  } catch (error){
-    opnDiv('err');
-gebi('err').innerHTML +=error;
-  }
-}
+        function getLocation() {
+            hiding()
+            try {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } catch (error) {
+                opnDiv('err');
+                gebi('err').innerHTML += error;
+            }
+        }
 
-function showPosition(position) {
-      let lttd =position.coords.latitude, lngtd=position.coords.longitude ,scnds = new Date().getTime(),
-lien ='https://www.google.com/maps/place/'+ lttd + ',+' +lngtd ;
+        function showPosition(position) {
+            let lttd = position.coords.latitude, lngtd = position.coords.longitude, scnds = new Date().getTime(),
+                lien = 'https://www.google.com/maps/place/' + lttd + ',' + lngtd;
 
-dsply("rslt","block");
-    gebi('rslt').innerHTML = `
+            dsply("rslt", "block");
+            gebi('rslt').innerHTML = `
 <div class="dvrslt">موقعك على الخريطة هو <br>
        <a id="arslt"  target="_blank" href="${lien}">${lien}</a>
        <br> </br>
@@ -242,50 +261,53 @@ dsply("rslt","block");
 <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d405.05301108992666!2d${lngtd}!3d${lttd}!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sar!2sdz!4v${scnds} !5m2!1sar!2sdz"  
 width="94%"  max-width="650" height="450" style="border:0;border-radius:5px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 `
-;
-gebi("inpRslt").value=lien;
-}
+                ;
+            gebi("inpRslt").value = lien;
+        }
 
 
-gebi("divplac").addEventListener("click",n=>{n.stopPropagation()});
-function hiding() {
-setTimeout(() => {
-        gebi("divplac").className = "dvPlc";
-    }, 200)
-    
- setTimeout(() => {
-document.querySelectorAll('.hidjs').forEach(el=>{
-el.style.display="none";
-})
-        
-    }, 550)
-}
+        gebi("divplac").addEventListener("click", n => { n.stopPropagation() });
+        function hiding() {
+            setTimeout(() => {
+                gebi("divplac").className = "dvPlc";
+            }, 100)
+
+            setTimeout(() => {
+                document.querySelectorAll('.hidjs').forEach(el => {
+                    el.style.display = "none";
+                })
+
+            }, 450)
+        }
 
 
 
-function opnDiv(el){
-        dsply("cntnr","flex");
-        gebi("divplac").className +=" opPlc";  
- dsply(el,"block");
-}
+        function opnDiv(el) {
+            dsply("cntnr", "flex");
+            setTimeout(() => {
+                gebi("divplac").className += " opPlc";
+            }, 5)
+            dsply(el, "block");
+        }
 
 
-function copyLien(){
-let rslt = gebi('inpRslt');
-    rslt.select();
-rslt.setSelectionRange(0, 9999);
-navigator.clipboard.writeText(rslt.value);
+        function copyLien() {
+            let rslt = gebi('inpRslt');
+            rslt.select();
+            rslt.setSelectionRange(0, 9999);
+            navigator.clipboard.writeText(rslt.value);
 
-dsply('isCpd',"block");
-setTimeout(() => {
-        dsply('isCpd',"none");
-    }, 5000)
-}
+            dsply('isCpd', "block");
+            setTimeout(() => {
+                dsply('isCpd', "none");
+            }, 5000)
+        }
 
-/*///// short function \\\\\*/
-function dsply(el,dsp){gebi(el).style.display=dsp}
-function gebi(el){  return document.getElementById(el)  }
-</script>
+        /*///// short function \\\\\*/
+        function dsply(el, dsp) { gebi(el).style.display = dsp }
+        function gebi(el) { return document.getElementById(el) }
+    </script>
 
 </body>
+
 </html>
