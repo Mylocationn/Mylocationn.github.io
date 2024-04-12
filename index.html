@@ -76,7 +76,7 @@
             transform: scaleY(1);
         }
 
-        .clrear {
+        .clear {
             font-size: 5vh;
             color: #555;
             float: right;
@@ -94,7 +94,7 @@
             cursor: pointer;
         }
 
-        .clrear::before {
+        .clear::before {
             content: "";
             position: absolute;
             left: 0;
@@ -107,7 +107,7 @@
             transition: 0.3s
         }
 
-        .clrear:hover::before {
+        .clear:hover::before {
             opacity: 1
         }
 
@@ -191,13 +191,6 @@
     </style>
 
 
-
-
-
-
-
-
-
     <title> موقعي على الخريطة </title>
 </head>
 
@@ -205,7 +198,7 @@
 
     <div id="cntnr" class="hidjs" onclick="hiding()">
         <div id="divplac" class="dvPlc">
-            <span class="clrear" onclick="hiding()">×</span>
+            <span class="clear" onclick="hiding()">×</span>
 
             <hr style="margin-top:55px">
 
